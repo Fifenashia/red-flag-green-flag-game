@@ -1,5 +1,11 @@
 const scenarios = [
   // Red Flag Deck (Power & Control)
+   {
+    image: "https://via.placeholder.com/400x200?text=Boundaries",
+    scenario: "Your partner respects when you need space and says, 'I'll be here when you're ready.'",
+    correctAnswer: "green",
+    explanation: "This is a green flag—respecting boundaries without guilt is key to emotional safety."
+  },
   {
     image: "https://via.placeholder.com/400x200?text=Emotional+Abuse",
     scenario: "Your partner calls you names and mocks you when you get upset, then says you're too sensitive.",
@@ -11,6 +17,12 @@ const scenarios = [
     scenario: "Your partner gets angry when you spend time with friends and says, 'You don't need anyone but me.'",
     correctAnswer: "red",
     explanation: "This is a red flag—cutting you off from support systems is a control tactic."
+  },
+   {
+    image: "https://via.placeholder.com/400x200?text=Listening",
+    scenario: "Your partner notices you're upset and asks, 'Do you want to talk or just need space?'",
+    correctAnswer: "green",
+    explanation: "This is a green flag—respecting your needs shows emotional maturity."
   },
   {
     image: "https://via.placeholder.com/400x200?text=Blame",
@@ -24,11 +36,29 @@ const scenarios = [
     correctAnswer: "red",
     explanation: "This is a red flag—using children to manipulate or threaten is coercive."
   },
+    {
+    image: "https://via.placeholder.com/400x200?text=Independence",
+    scenario: "Your partner encourages you to spend time with friends and care for yourself.",
+    correctAnswer: "green",
+    explanation: "This is a green flag—healthy partners support your independence and outside relationships."
+  },
+   {
+    image: "https://via.placeholder.com/400x200?text=Finance",
+    scenario: "Your partner suggests building a shared budget and encourages your financial independence.",
+    correctAnswer: "green",
+    explanation: "This is a green flag—financial partnership builds transparency and equality."
+  },
   {
     image: "https://via.placeholder.com/400x200?text=Gender+Roles",
     scenario: "Your partner says you shouldn't make decisions because 'that's the man's role.'",
     correctAnswer: "red",
     explanation: "This is a red flag—controlling behavior based on gender roles signals dominance."
+  },
+    {
+    image: "https://via.placeholder.com/400x200?text=Accountability",
+    scenario: "Your partner apologizes for snapping and says, 'That wasn't okay—I'll work on it.'",
+    correctAnswer: "green",
+    explanation: "This is a green flag—taking responsibility is key to growth and respect."
   },
   {
     image: "https://via.placeholder.com/400x200?text=Money",
@@ -50,24 +80,8 @@ const scenarios = [
   },
 
   // Green Flag Deck (Respect & Equality)
-  {
-    image: "https://via.placeholder.com/400x200?text=Listening",
-    scenario: "Your partner notices you're upset and asks, 'Do you want to talk or just need space?'",
-    correctAnswer: "green",
-    explanation: "This is a green flag—respecting your needs shows emotional maturity."
-  },
-  {
-    image: "https://via.placeholder.com/400x200?text=Independence",
-    scenario: "Your partner encourages you to spend time with friends and care for yourself.",
-    correctAnswer: "green",
-    explanation: "This is a green flag—healthy partners support your independence and outside relationships."
-  },
-  {
-    image: "https://via.placeholder.com/400x200?text=Accountability",
-    scenario: "Your partner apologizes for snapping and says, 'That wasn't okay—I'll work on it.'",
-    correctAnswer: "green",
-    explanation: "This is a green flag—taking responsibility is key to growth and respect."
-  },
+
+
   {
     image: "https://via.placeholder.com/400x200?text=Coparenting",
     scenario: "Your partner says, 'Let's figure out what's best for both of us and the kids.'",
@@ -79,18 +93,6 @@ const scenarios = [
     scenario: "Your partner says, 'We're a team—let's decide together.'",
     correctAnswer: "green",
     explanation: "This is a green flag—mutual decision-making builds balance and equity."
-  },
-  {
-    image: "https://via.placeholder.com/400x200?text=Finance",
-    scenario: "Your partner suggests building a shared budget and encourages your financial independence.",
-    correctAnswer: "green",
-    explanation: "This is a green flag—financial partnership builds transparency and equality."
-  },
-  {
-    image: "https://via.placeholder.com/400x200?text=Boundaries",
-    scenario: "Your partner respects when you need space and says, 'I'll be here when you're ready.'",
-    correctAnswer: "green",
-    explanation: "This is a green flag—respecting boundaries without guilt is key to emotional safety."
   },
   {
     image: "https://via.placeholder.com/400x200?text=Conflict+Resolution",
