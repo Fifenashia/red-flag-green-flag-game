@@ -30,8 +30,6 @@ const scenarios = [
   // ... (keep the rest of your existing scenarios, just make sure the format is consistent)
 ];
 
-];
-
 let filteredScenarios = [];
 let current = 0;
 
