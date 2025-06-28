@@ -7,21 +7,21 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="logoContainer">
-    <img src="images/wellspring-logo.png" alt="Wellspring Logo" id="logo">
-  </div>
-
-  <div id="filterContainer">
-    <h2>Select Categories</h2>
-    <label><input type="checkbox" name="category" value="romantic" /> Romantic</label><br/>
-    <label><input type="checkbox" name="category" value="parenting" /> Parenting</label><br/>
-    <label><input type="checkbox" name="category" value="friendship" /> Friendship</label><br/><br/>
-    <button onclick="startGame()">Start Game</button>
-  </div>
-
-  <div id="gameCard" style="display: none;">
+<div id="logoContainer">
+  <img src="images/wellspring-logo.png" alt="Wellspring Logo" id="logo">
+</div>
+  <div id="gameCard">
     <h1>Red Flag or Green Flag?</h1>
-    <img id="scenarioImage" alt="Scenario" style="display: none;" />
+   <img id="scenarioImage" alt="Scenario" style="display: none;" />
     <p id="scenarioText">Loading scenario...</p>
     <div class="buttonGroup">
-      <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</but
+      <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
+      <button class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
+    </div>
+    <p id="feedback"></p>
+    <button class="next" onclick="nextScenario()">Next Card ➡️</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
