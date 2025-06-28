@@ -95,3 +95,27 @@ button:hover {
   object-fit: contain;
   transform: scale(1.2);
 }
+#filterContainer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#categorySelect {
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 220px;
+  height: 100px;
+}
+
+#filterContainer button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #2c7a7b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
