@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Red Flag or Green Flag?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Red Flag or Green Flag?</h1>
+
+  <div class="card">
+    <img id="scenarioImage" src="" alt="Scenario image" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
+    
+    <p id="scenarioText">Loading scenario...</p>
+
+    <div class="buttons">
+      <button onclick="checkAnswer('green')">✅ Green Flag</button>
+      <button onclick="checkAnswer('red')">🟥 Red Flag</button>
+    </div>
+
+    <p id="feedback"></p>
+
+    <button onclick="nextScenario()" style="margin-top: 20px;">Next</button>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
