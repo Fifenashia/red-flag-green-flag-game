@@ -77,7 +77,7 @@ const scenarios = [
     category: "friendship"
   },
   {
-    image: "https://via.placeholder.com/400x200?text=Control",
+    image: "https://via.placeholder.com/400x200?text=Controlling+Friend",
     scenario: "Your friend tells you who you can or can’t hang out with.",
     correctAnswer: "red",
     explanation: "This is a red flag—friends shouldn’t control your personal relationships.",
