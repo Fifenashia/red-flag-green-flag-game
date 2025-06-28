@@ -33,7 +33,6 @@ const scenarios = [
 let filteredScenarios = [];
 let current = 0;
 
-// Shuffle using Fisher-Yates
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -42,30 +41,35 @@ function shuffle(array) {
   return array;
 }
 
-function applyCategoryFilter() {
-  const checkboxes = document.querySelectorAll('#filterContainer input[type="checkbox"]:checked');
-  const selected = Array.from(checkboxes).map(cb => cb.value.toLowerCase());
+function startGame() {
+  const selectedCheckboxes = document.querySelectorAll('input[name="category"]:checked');
+  const selectedCategories = Array.from(selectedCheckboxes).map(cb => cb.value);
 
-  if (selected.length === 0) {
-    alert("Please select at least one category to begin.");
+  if (selectedCategories.length === 0) {
+    alert("Please select at least one category to start the game.");
     return;
   }
 
-  filteredScenarios = scenarios.filter(s => selected.includes(s.category.toLowerCase()));
+  filteredScenarios = scenarios.filter(s => selectedCategories.includes(s.category));
   shuffle(filteredScenarios);
+
+  if (filteredScenarios.length === 0) {
+    alert("No scenarios match your selected categories.");
+    return;
+  }
+
   current = 0;
-
-  document.getElementById("filterContainer").style.display = "none";
-  document.getElementById("gameCard").style.display = "block";
-
+  document.getElementById('filterContainer').style.display = 'none';
+  document.getElementById('gameCard').style.display = 'block';
   loadScenario();
 }
 
 function loadScenario() {
   const s = filteredScenarios[current];
   document.getElementById('scenarioText').innerText = s.scenario;
-  document.getElementById('scenarioImage').src = s.image;
-  document.getElementById('scenarioImage').style.display = 'block';
+  const imageElement = document.getElementById('scenarioImage');
+  imageElement.src = s.image;
+  imageElement.style.display = 'block';
   document.getElementById('feedback').innerText = '';
 }
 
@@ -83,8 +87,3 @@ function nextScenario() {
   current = (current + 1) % filteredScenarios.length;
   loadScenario();
 }
-
-// Hide gameCard initially
-window.onload = () => {
-  document.getElementById("gameCard").style.display = "none";
-};
