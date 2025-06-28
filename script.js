@@ -30,10 +30,12 @@ const scenarios = [
   // ... (keep the rest of your existing scenarios, just make sure the format is consistent)
 ];
 
+];
+
 let filteredScenarios = [];
 let current = 0;
 
-// Shuffle scenarios using Fisher-Yates
+// Shuffle using Fisher-Yates
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -42,19 +44,30 @@ function shuffle(array) {
   return array;
 }
 
-function loadScenario() {
-  if (filteredScenarios.length === 0) {
-    document.getElementById('scenarioText').innerText = "No scenarios match the selected categories.";
-    document.getElementById('scenarioImage').style.display = "none";
-    document.getElementById('feedback').innerText = "";
+function applyCategoryFilter() {
+  const checkboxes = document.querySelectorAll('#filterContainer input[type="checkbox"]:checked');
+  const selected = Array.from(checkboxes).map(cb => cb.value.toLowerCase());
+
+  if (selected.length === 0) {
+    alert("Please select at least one category to begin.");
     return;
   }
 
+  filteredScenarios = scenarios.filter(s => selected.includes(s.category.toLowerCase()));
+  shuffle(filteredScenarios);
+  current = 0;
+
+  document.getElementById("filterContainer").style.display = "none";
+  document.getElementById("gameCard").style.display = "block";
+
+  loadScenario();
+}
+
+function loadScenario() {
   const s = filteredScenarios[current];
   document.getElementById('scenarioText').innerText = s.scenario;
-  const img = document.getElementById('scenarioImage');
-  img.src = s.image;
-  img.style.display = "block";
+  document.getElementById('scenarioImage').src = s.image;
+  document.getElementById('scenarioImage').style.display = 'block';
   document.getElementById('feedback').innerText = '';
 }
 
@@ -69,22 +82,11 @@ function checkAnswer(answer) {
 }
 
 function nextScenario() {
-  if (filteredScenarios.length === 0) return;
   current = (current + 1) % filteredScenarios.length;
   loadScenario();
 }
 
-function startGame() {
-  const checkboxes = document.querySelectorAll('input[name="category"]:checked');
-  const selectedCategories = Array.from(checkboxes).map(cb => cb.value.toLowerCase());
-
-  if (selectedCategories.length === 0) {
-    filteredScenarios = [...scenarios]; // Show all if nothing selected
-  } else {
-    filteredScenarios = scenarios.filter(s => selectedCategories.includes(s.category.toLowerCase()));
-  }
-
-  shuffle(filteredScenarios);
-  current = 0;
-  loadScenario();
-}
+// Hide gameCard initially
+window.onload = () => {
+  document.getElementById("gameCard").style.display = "none";
+};
