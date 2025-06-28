@@ -1,5 +1,4 @@
 const scenarios = [
-  // Red Flag Deck (Power & Control)
    {
     image: "https://via.placeholder.com/400x200?text=Boundaries",
     scenario: "Your partner respects when you need space and says, 'I'll be here when you're ready.'",
@@ -78,10 +77,6 @@ const scenarios = [
     correctAnswer: "red",
     explanation: "This is a red flag—intimidation is used to create fear, even without physical contact."
   },
-
-  // Green Flag Deck (Respect & Equality)
-
-
   {
     image: "https://via.placeholder.com/400x200?text=Coparenting",
     scenario: "Your partner says, 'Let's figure out what's best for both of us and the kids.'",
@@ -117,10 +112,13 @@ let current = 0;
 
 function loadScenario() {
   const s = scenarios[current];
+  const imageElement = document.getElementById('scenarioImage');
+  imageElement.src = s.image;
+  imageElement.style.display = 'block'; // Show the image once loaded
   document.getElementById('scenarioText').innerText = s.scenario;
-  document.getElementById('scenarioImage').src = s.image;
   document.getElementById('feedback').innerText = '';
 }
+
 
 function checkAnswer(answer) {
   const s = scenarios[current];
