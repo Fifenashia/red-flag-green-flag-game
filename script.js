@@ -148,8 +148,10 @@ const scenarios = [
   }
 ];
 
+let filteredScenarios = [];
+let current = 0;
 
-// Shuffle scenarios using Fisher-Yates shuffle
+// Shuffle using Fisher-Yates
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -158,18 +160,15 @@ function shuffle(array) {
   return array;
 }
 
-shuffle(scenarios); // Randomize order at start
-
-let current = 0;
-
 function loadScenario() {
-  const s = scenarios[current];
+  const s = filteredScenarios[current];
   document.getElementById('scenarioText').innerText = s.scenario;
+  document.getElementById('scenarioImage').src = s.image;
   document.getElementById('feedback').innerText = '';
 }
 
 function checkAnswer(answer) {
-  const s = scenarios[current];
+  const s = filteredScenarios[current];
   const feedback = document.getElementById('feedback');
   if (answer === s.correctAnswer) {
     feedback.innerText = `✅ Correct! ${s.explanation}`;
@@ -179,9 +178,11 @@ function checkAnswer(answer) {
 }
 
 function nextScenario() {
-  current = (current + 1) % scenarios.length;
+  current = (current + 1) % filteredScenarios.length;
   loadScenario();
 }
 
-window.onload = loadScenario;
+function startGame() {
+  const selectedCategories = Array.from(document.qu
+
 
