@@ -112,13 +112,9 @@ let current = 0;
 
 function loadScenario() {
   const s = scenarios[current];
-  const imageElement = document.getElementById('scenarioImage');
-  imageElement.src = s.image;
-  imageElement.style.display = 'block'; // Show the image once loaded
   document.getElementById('scenarioText').innerText = s.scenario;
   document.getElementById('feedback').innerText = '';
 }
-
 
 function checkAnswer(answer) {
   const s = scenarios[current];
