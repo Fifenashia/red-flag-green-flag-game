@@ -2,11 +2,13 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #e6f2ef;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding-top: 20px;
 }
+
 
 #gameCard {
   background-color: white;
