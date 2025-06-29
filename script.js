@@ -86,28 +86,39 @@ function shuffle(array) {
   return array;
 }
 
-function restartGame() {
-  // Reset tracking variables
-  missedScenarios = [];
+function startGame() {
+  const selected = Array.from(document.querySelectorAll("input[name='category']:checked"))
+    .map(cb => cb.value);
+
+  if (selected.length === 0) {
+    alert("Please select at least one category to play.");
+    return;
+  }
+
+  filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
+
+  if (filteredScenarios.length === 0) {
+    alert("No scenarios available for selected category.");
+    return;
+  }
+
   current = 0;
   score = 0;
-  total = 0;
+  total = filteredScenarios.length;
+  missedScenarios = []; // Reset missed list
+  document.getElementById("progressBar").style.width = "0%";
 
-  // Reset progress bar if present
-  const progress = document.getElementById("progressBar");
-  if (progress) progress.style.width = "0%";
-
-  // Clear lingering feedback/review content
-  document.getElementById("feedback").innerText = "";
-  const review = document.getElementById("reviewContainer");
-  if (review) review.innerHTML = "";
-
-  // Reset UI screens
-  document.getElementById("startScreen").style.display = "block";
-  document.getElementById("gameCard").style.display = "none";
+  // Reset screens
+  document.getElementById("startScreen").style.display = "none";
   document.getElementById("endScreen").style.display = "none";
-  document.querySelectorAll(".buttonGroup button").forEach(btn => (btn.disabled = false));
+  document.getElementById("gameCard").style.display = "block";
+
+  // ✅ FIX: Re-enable buttons
+  document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
+
+  loadScenario();
 }
+
 
 
   // Filter and shuffle scenarios
