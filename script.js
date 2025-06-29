@@ -212,8 +212,6 @@ console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
 
   // ✅ FIX: Re-enable buttons
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
-
-  loadScenario();
 }
 
 function loadScenario() {
