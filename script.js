@@ -222,19 +222,25 @@ function loadScenario() {
   // Set scenario text
   document.getElementById("scenarioText").innerText = s.scenario;
 
-  // Hide or show image
+  // Show or hide scenario image
   document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
   document.getElementById("scenarioImage").src = s.image || "";
 
   // Reset feedback
   document.getElementById("feedback").innerText = "";
 
-  // Show emoji by category
- const iconMap = {
-  romantic: "images/romantic-icon.png",
-  parenting: "images/parenting-icon.png",
-  friendship: "images/friendship-icon.png"
-};
+  // Show category icon based on scenario type
+  const iconMap = {
+    romantic: "images/romantic-icon.png",
+    parenting: "images/parenting-icon.png",
+    friendship: "images/friendship-icon.png"
+  };
+
+  const categoryIcon = document.getElementById("categoryIcon");
+  categoryIcon.src = iconMap[s.category] || "";
+  categoryIcon.style.display = s.category ? "inline-block" : "none";
+}
+
 
 const categoryIcon = document.getElementById("categoryIcon");
 categoryIcon.src = iconMap[s.category] || "";
