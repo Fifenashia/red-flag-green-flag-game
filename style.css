@@ -80,7 +80,7 @@ label {
 }
 
 .next {
-  background-color:  #1e3a8a; /* Dark blue */
+  background-color: #1e3a8a !important; /* Force override */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -92,8 +92,9 @@ label {
 }
 
 .next:hover {
-  background-color: #274aa3; /* Slightly lighter blue on hover */
+  background-color: #274aa3 !important; /* Lighter blue on hover */
 }
+
 
 #progressContainer {
   width: 100%;
