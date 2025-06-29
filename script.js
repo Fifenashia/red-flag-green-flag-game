@@ -119,27 +119,6 @@ function startGame() {
   loadScenario();
 }
 
-
-
-  // Filter and shuffle scenarios
-  filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
-
-  if (filteredScenarios.length === 0) {
-    alert("No scenarios available for selected category.");
-    return;
-  }
-
-  current = 0;
-  score = 0;
-  total = filteredScenarios.length;
-
-  document.getElementById("startScreen").style.display = "none";
-  document.getElementById("endScreen").style.display = "none";
-  document.getElementById("gameCard").style.display = "block";
-
-  loadScenario();
-}
-
 function loadScenario() {
   const s = filteredScenarios[current];
   document.getElementById("scenarioText").innerText = s.scenario;
