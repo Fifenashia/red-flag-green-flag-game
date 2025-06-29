@@ -96,7 +96,7 @@ const scenarios = [
   correctAnswer: "green",
   explanation: "This is a green flag—consistency and teamwork provide stability for the child.",
   category: "parenting"
-}
+},
 {
   scenario: "Your co-parent asks, 'What’s been working for you at home?' so you can stay consistent.",
   correctAnswer: "green",
