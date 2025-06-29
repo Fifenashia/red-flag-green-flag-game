@@ -73,7 +73,11 @@ const scenarios = [
   }
 ];
 
-// Shuffle scenarios using Fisher-Yates shuffle
+let filteredScenarios = [];
+let current = 0;
+let score = 0;
+let total = 0;
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -82,29 +86,75 @@ function shuffle(array) {
   return array;
 }
 
-shuffle(scenarios); // Randomize order at start
+function startGame() {
+  // Get selected categories
+  const selected = Array.from(document.querySelectorAll("input[name='category']:checked"))
+    .map(cb => cb.value);
 
-let current = 0;
-
-function loadScenario() {
-  const s = scenarios[current];
-  document.getElementById('scenarioText').innerText = s.scenario;
-  document.getElementById('feedback').innerText = '';
-}
-
-function checkAnswer(answer) {
-  const s = scenarios[current];
-  const feedback = document.getElementById('feedback');
-  if (answer === s.correctAnswer) {
-    feedback.innerText = `✅ Correct! ${s.explanation}`;
-  } else {
-    feedback.innerText = `❌ Not quite. ${s.explanation}`;
+  if (selected.length === 0) {
+    alert("Please select at least one category to play.");
+    return;
   }
-}
 
-function nextScenario() {
-  current = (current + 1) % scenarios.length;
+  // Filter and shuffle scenarios
+  filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
+
+  if (filteredScenarios.length === 0) {
+    alert("No scenarios available for selected category.");
+    return;
+  }
+
+  current = 0;
+  score = 0;
+  total = filteredScenarios.length;
+
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("endScreen").style.display = "none";
+  document.getElementById("gameCard").style.display = "block";
+
   loadScenario();
 }
 
-window.onload = loadScenario;
+function loadScenario() {
+  const s = filteredScenarios[current];
+  document.getElementById("scenarioText").innerText = s.scenario;
+  document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
+  document.getElementById("scenarioImage").src = s.image || "";
+  document.getElementById("feedback").innerText = "";
+}
+
+function checkAnswer(answer) {
+  const s = filteredScenarios[current];
+  const feedback = document.getElementById("feedback");
+  if (answer === s.correctAnswer) {
+    feedback.innerText = `✅ Correct! ${s.explanation}`;
+    score++;
+  } else {
+    feedback.innerText = `❌ Not quite. ${s.explanation}`;
+  }
+
+  // Disable buttons until next is clicked
+  document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = true);
+}
+
+function nextScenario() {
+  current++;
+  if (current < filteredScenarios.length) {
+    loadScenario();
+    document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
+  } else {
+    endGame();
+  }
+}
+
+function endGame() {
+  document.getElementById("gameCard").style.display = "none";
+  document.getElementById("endScreen").style.display = "block";
+  document.getElementById("scoreSummary").innerText = `You got ${score} out of ${total} correct!`;
+}
+
+function restartGame() {
+  document.getElementById("startScreen").style.display = "block";
+  document.getElementById("gameCard").style.display = "none";
+  document.getElementById("endScreen").style.display = "none";
+}
