@@ -227,9 +227,18 @@ function loadScenario() {
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
   const feedback = document.getElementById("feedback");
+
   if (answer === s.correctAnswer) {
     feedback.innerText = `✅ Correct! ${s.explanation}`;
     score++;
+
+    // 🎉 Confetti celebration!
+    confetti({
+      particleCount: 75,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
   } else {
     feedback.innerText = `❌ Not quite. ${s.explanation}`;
   }
