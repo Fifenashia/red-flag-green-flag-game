@@ -1,8 +1,13 @@
+/* Optional: use Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  background-color: #e6f2f0;
-  font-family: Arial, sans-serif;
+  background-color: #fdf6f0; /* soft blush */
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   padding: 20px;
+  margin: 0;
+  color: #333;
 }
 
 #logoContainer {
@@ -14,46 +19,83 @@ body {
   max-height: 120px;
 }
 
-#gameCard {
-  background: white;
+#startScreen, #endScreen {
+  background-color: #fff;
   border-radius: 16px;
-  padding: 20px;
-  max-width: 500px;
+  padding: 25px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#gameCard {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.introText {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.5;
+  color: #444;
+}
+
+label {
+  margin: 10px;
+  display: inline-block;
+  font-weight: 600;
 }
 
 .buttonGroup button {
-  margin: 10px;
-  padding: 10px 20px;
+  margin: 12px;
+  padding: 12px 24px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.buttonGroup button:hover {
+  transform: scale(1.05);
 }
 
 .red {
-  background-color: #e57373;
+  background-color: #ff6b6b; /* coral red */
   color: white;
 }
 
 .green {
-  background-color: #81c784;
+  background-color: #00bfa6; /* bold teal */
   color: white;
 }
 
 .next {
-  background-color: #4db6ac;
+  background-color: #ffa94d; /* warm orange-yellow */
   color: white;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   margin-top: 20px;
   font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
+
+.next:hover {
+  background-color: #ff922b;
+}
+
 #progressContainer {
   width: 100%;
-  background-color: #ccc;
+  background-color: #eee;
   height: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -62,15 +104,34 @@ body {
 #progressBar {
   height: 100%;
   width: 0%;
-  background-color: #4caf50;
+  background-color: #00bfa6; /* same as green flag */
   border-radius: 10px;
   transition: width 0.3s ease-in-out;
 }
-/* ✅ Intro Paragraph Styling */
-.introText {
-  font-size: 16px;
+
+#feedback {
+  font-weight: 600;
+  margin-top: 16px;
+  color: #444;
+}
+
+#reviewContainer {
+  text-align: left;
   max-width: 600px;
-  margin: 0 auto 20px;
-  line-height: 1.5;
-  color: #333;
+  margin: 20px auto;
+  background: #ffffffdd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#reviewContainer p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+#reviewContainer hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 12px 0;
 }
