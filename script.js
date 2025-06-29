@@ -135,6 +135,9 @@ function startGame() {
   }
 
   filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
+  console.log("Loaded scenarios:", filteredScenarios.length);
+console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
+
 
   if (filteredScenarios.length === 0) {
     alert("No scenarios available for selected category.");
