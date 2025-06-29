@@ -191,8 +191,7 @@ function startGame() {
 
   filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
   console.log("Loaded scenarios:", filteredScenarios.length);
-console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
-
+  console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
 
   if (filteredScenarios.length === 0) {
     alert("No scenarios available for selected category.");
@@ -228,22 +227,23 @@ function loadScenario() {
   document.getElementById("feedback").innerText = "";
 
   // Show icon by category
-const iconMap = {
-  romantic: "image/romantic-icon.png",
-  parenting: "image/parenting-icon.png",
-  friendship: "image/friendship-icon.png"
-};
+  const iconMap = {
+    romantic: "image/romantic-icon.png",
+    parenting: "image/parenting-icon.png",
+    friendship: "image/friendship-icon.png"
+  };
 
-const categoryIcon = document.getElementById("categoryIcon");
-if (categoryIcon) {
-  const iconSrc = iconMap[s.category];
-  console.log("Icon source:", iconSrc); // Debug
+  const categoryIcon = document.getElementById("categoryIcon");
+  if (categoryIcon) {
+    const iconSrc = iconMap[s.category];
+    console.log("Icon source:", iconSrc); // Debug
 
-   if (iconSrc) {
-    categoryIcon.src = iconSrc;
-    categoryIcon.style.display = "inline-block";
-  } else {
-    categoryIcon.style.display = "none";
+    if (iconSrc) {
+      categoryIcon.src = iconSrc;
+      categoryIcon.style.display = "inline-block";
+    } else {
+      categoryIcon.style.display = "none";
+    }
   }
 } 
 
@@ -251,21 +251,21 @@ function checkAnswer(answer) {
   const s = filteredScenarios[current];
   const feedback = document.getElementById("feedback");
 
- if (answer === s.correctAnswer) {
-  feedback.innerText = `✅ Correct! ${s.explanation}`;
-  score++;
+  if (answer === s.correctAnswer) {
+    feedback.innerText = `✅ Correct! ${s.explanation}`;
+    score++;
 
-  console.log("🎉 Confetti should be firing now!");
+    console.log("🎉 Confetti should be firing now!");
 
-  confetti({
-    particleCount: 75,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
+    confetti({
+      particleCount: 75,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
 
-} else {
-  feedback.innerText = `❌ Not quite. ${s.explanation}`;
-}
+  } else {
+    feedback.innerText = `❌ Not quite. ${s.explanation}`;
+  }
 
   // Disable buttons until next is clicked
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = true);
@@ -309,4 +309,3 @@ function restartGame() {
   // Re-enable answer buttons in case they stayed disabled
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 }
-  
