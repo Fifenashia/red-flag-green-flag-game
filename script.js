@@ -86,15 +86,29 @@ function shuffle(array) {
   return array;
 }
 
-function startGame() {
-  // Get selected categories
-  const selected = Array.from(document.querySelectorAll("input[name='category']:checked"))
-    .map(cb => cb.value);
+function restartGame() {
+  // Reset tracking variables
+  missedScenarios = [];
+  current = 0;
+  score = 0;
+  total = 0;
 
-  if (selected.length === 0) {
-    alert("Please select at least one category to play.");
-    return;
-  }
+  // Reset progress bar if present
+  const progress = document.getElementById("progressBar");
+  if (progress) progress.style.width = "0%";
+
+  // Clear lingering feedback/review content
+  document.getElementById("feedback").innerText = "";
+  const review = document.getElementById("reviewContainer");
+  if (review) review.innerHTML = "";
+
+  // Reset UI screens
+  document.getElementById("startScreen").style.display = "block";
+  document.getElementById("gameCard").style.display = "none";
+  document.getElementById("endScreen").style.display = "none";
+  document.querySelectorAll(".buttonGroup button").forEach(btn => (btn.disabled = false));
+}
+
 
   // Filter and shuffle scenarios
   filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
