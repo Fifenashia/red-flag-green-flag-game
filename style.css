@@ -66,3 +66,11 @@ body {
   border-radius: 10px;
   transition: width 0.3s ease-in-out;
 }
+/* ✅ Intro Paragraph Styling */
+.introText {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.5;
+  color: #333;
+}
