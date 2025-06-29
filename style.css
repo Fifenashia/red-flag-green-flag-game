@@ -80,20 +80,19 @@ label {
 }
 
 .next {
-  background-color: #ffa94d; /* warm orange-yellow */
+  background-color:  #1e3a8a; /* Dark blue */
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-top: 20px;
   font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s;
 }
 
 .next:hover {
-  background-color: #ff922b;
+  background-color: #274aa3; /* Slightly lighter blue on hover */
 }
 
 #progressContainer {
