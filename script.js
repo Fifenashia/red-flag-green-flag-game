@@ -231,9 +231,9 @@ function loadScenario() {
 
   // Show icon by category
   const iconMap = {
-    romantic: "images/romantic-icon.png",
-    parenting: "images/parenting-icon.png",
-    friendship: "images/friendship-icon.png"
+    romantic: "image/romantic-icon.png",
+    parenting: "image/parenting-icon.png",
+    friendship: "image/friendship-icon.png"
   };
 
   const categoryIcon = document.getElementById("categoryIcon");
