@@ -154,7 +154,24 @@ function endGame() {
 }
 
 function restartGame() {
+  // Reset tracking variables
+  missedScenarios = [];
+  current = 0;
+  score = 0;
+  total = 0;
+
+  // Reset progress bar
+  document.getElementById("progressBar").style.width = "0%";
+
+  // Clear any lingering feedback or review content
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("reviewContainer").innerHTML = "";
+
+  // Reset UI screens
   document.getElementById("startScreen").style.display = "block";
   document.getElementById("gameCard").style.display = "none";
   document.getElementById("endScreen").style.display = "none";
+
+  // Re-enable answer buttons in case they stayed disabled
+  document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 }
