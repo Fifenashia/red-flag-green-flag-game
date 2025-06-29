@@ -241,13 +241,13 @@ if (categoryIcon) {
   const iconSrc = iconMap[s.category];
   console.log("Icon source:", iconSrc); // Debug
 
-  if (iconSrc) {
+   if (iconSrc) {
     categoryIcon.src = iconSrc;
     categoryIcon.style.display = "inline-block";
   } else {
     categoryIcon.style.display = "none";
   }
-}
+} 
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
@@ -311,3 +311,4 @@ function restartGame() {
   // Re-enable answer buttons in case they stayed disabled
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 }
+  
