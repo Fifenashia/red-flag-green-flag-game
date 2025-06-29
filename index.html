@@ -22,18 +22,27 @@
   <button onclick="startGame()">Start Game</button>
 </div>
 
-<!-- ✅ GAME SCREEN: Only visible during play -->
 <div id="gameCard" style="display:none;">
   <h1>Red Flag or Green Flag?</h1>
+
+  <!-- ✅ Progress Bar -->
+  <div id="progressContainer">
+    <div id="progressBar"></div>
+  </div>
+
   <img id="scenarioImage" alt="Scenario" />
   <p id="scenarioText">Loading scenario...</p>
+  <button onclick="speak(document.getElementById('scenarioText').innerText)">🔊 Listen</button>
+
   <div class="buttonGroup">
     <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
     <button class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
   </div>
+
   <p id="feedback"></p>
   <button class="next" onclick="nextScenario()">Next Card ➡️</button>
 </div>
+
 
 <!-- ✅ END SCREEN: Only visible when game ends -->
 <div id="endScreen" style="display:none;">
