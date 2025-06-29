@@ -70,7 +70,43 @@ const scenarios = [
     correctAnswer: "red",
     explanation: "This is a red flag—friends shouldn’t control your personal relationships.",
     category: "friendship"
-  }
+  },
+  {
+  scenario: "Your co-parent constantly changes pick-up plans and blames you when the child is disappointed.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—instability and blame-shifting can confuse and emotionally harm children.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent asks, 'What’s been working for you at home?' so you can stay consistent.",
+  correctAnswer: "green",
+  explanation: "This is a green flag—working together to stay on the same page supports the child’s stability.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent says, 'They love me more than you,' in front of the child.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—pitting a child against a parent is emotionally manipulative and harmful.",
+  category: "parenting"
+},
+{
+  scenario: "Your friend says, 'If you were really my friend, you'd tell me everything.'",
+  correctAnswer: "red",
+  explanation: "This is a red flag—pressuring someone to overshare crosses emotional boundaries.",
+  category: "friendship"
+},
+{
+  scenario: "Your friend respects your boundaries, even if they’re disappointed.",
+  correctAnswer: "green",
+  explanation: "This is a green flag—supportive friendships allow space for boundaries and self-care.",
+  category: "friendship"
+},
+{
+  scenario: "Your friend makes fun of your achievements and calls you 'too sensitive' if you get upset.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—belittling and emotional invalidation aren’t signs of true friendship.",
+  category: "friendship"
+},
 ];
 
 let filteredScenarios = [];
