@@ -1,4 +1,5 @@
 const scenarios = [
+  // 💕 Romantic Scenarios
   {
     scenario: "Your partner respects when you need space and says, 'I'll be here when you're ready.'",
     correctAnswer: "green",
@@ -35,6 +36,7 @@ const scenarios = [
     explanation: "This is a green flag—healthy partners support your independence and outside relationships.",
     category: "romantic"
   },
+  // 👪 Parenting Scenarios
   {
     scenario: "You and your co-parent calmly discuss consequences when your child misbehaves.",
     correctAnswer: "green",
@@ -53,6 +55,25 @@ const scenarios = [
     explanation: "This is a green flag—shared parenting decisions reflect teamwork and trust.",
     category: "parenting"
   },
+    {
+  scenario: "Your co-parent constantly changes pick-up plans and blames you when the child is disappointed.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—instability and blame-shifting can confuse and emotionally harm children.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent asks, 'What’s been working for you at home?' so you can stay consistent.",
+  correctAnswer: "green",
+  explanation: "This is a green flag—working together to stay on the same page supports the child’s stability.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent says, 'They love me more than you,' in front of the child.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—pitting a child against a parent is emotionally manipulative and harmful.",
+  category: "parenting"
+},
+  // 🤝 Friendship Scenarios
   {
     scenario: "Your friend respects when you say you're too tired to hang out and says, 'No worries, rest up!'",
     correctAnswer: "green",
@@ -71,24 +92,6 @@ const scenarios = [
     explanation: "This is a red flag—friends shouldn’t control your personal relationships.",
     category: "friendship"
   },
-  {
-  scenario: "Your co-parent constantly changes pick-up plans and blames you when the child is disappointed.",
-  correctAnswer: "red",
-  explanation: "This is a red flag—instability and blame-shifting can confuse and emotionally harm children.",
-  category: "parenting"
-},
-{
-  scenario: "Your co-parent asks, 'What’s been working for you at home?' so you can stay consistent.",
-  correctAnswer: "green",
-  explanation: "This is a green flag—working together to stay on the same page supports the child’s stability.",
-  category: "parenting"
-},
-{
-  scenario: "Your co-parent says, 'They love me more than you,' in front of the child.",
-  correctAnswer: "red",
-  explanation: "This is a red flag—pitting a child against a parent is emotionally manipulative and harmful.",
-  category: "parenting"
-},
 {
   scenario: "Your friend says, 'If you were really my friend, you'd tell me everything.'",
   correctAnswer: "red",
