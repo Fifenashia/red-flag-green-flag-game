@@ -238,10 +238,15 @@ function loadScenario() {
 
   const categoryIcon = document.getElementById("categoryIcon");
   if (categoryIcon) {
-    categoryIcon.src = iconMap[s.category] || "";
-    categoryIcon.style.display = s.category ? "inline-block" : "none";
+    const iconSrc = iconMap[s.category];
+    if (iconSrc) {
+      categoryIcon.src = iconSrc;
+      categoryIcon.style.display = "inline-block";
+    } else {
+      categoryIcon.style.display = "none";
+    }
   }
-}
+
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
