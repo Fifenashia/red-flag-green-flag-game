@@ -230,13 +230,15 @@ function loadScenario() {
   document.getElementById("feedback").innerText = "";
 
   // Show emoji by category
-  const emojiMap = {
-    romantic: "💕",
-    parenting: "👪",
-    friendship: "🤝"
-  };
+ const iconMap = {
+  romantic: "images/romantic-icon.png",
+  parenting: "images/parenting-icon.png",
+  friendship: "images/friendship-icon.png"
+};
 
-  document.getElementById("categoryEmoji").innerText = emojiMap[s.category] || "";
+const categoryIcon = document.getElementById("categoryIcon");
+categoryIcon.src = iconMap[s.category] || "";
+categoryIcon.style.display = s.category ? "inline-block" : "none";
 }
 
 
