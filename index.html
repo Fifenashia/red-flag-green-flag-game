@@ -10,17 +10,37 @@
   <div id="logoContainer">
     <img src="image/WellSpring-logo.png" alt="Wellspring Logo" id="logo">
   </div>
+<!-- ✅ START SCREEN: Shows first -->
+<div id="startScreen">
+  <h1>Welcome to Red Flag or Green Flag!</h1>
+  <p>Select a category and press start to begin.</p>
 
-  <div id="gameCard">
-    <h1>Red Flag or Green Flag?</h1>
-    <p id="scenarioText">Loading scenario...</p>
-    <div class="buttonGroup">
-      <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
-      <button class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
-    </div>
-    <p id="feedback"></p>
-    <button class="next" onclick="nextScenario()">Next Card ➡️</button>
+  <label><input type="checkbox" name="category" value="romantic"> Romantic</label>
+  <label><input type="checkbox" name="category" value="parenting"> Parenting</label>
+  <label><input type="checkbox" name="category" value="friendship"> Friendship</label>
+  <br/><br/>
+  <button onclick="startGame()">Start Game</button>
+</div>
+
+<!-- ✅ GAME SCREEN: Only visible during play -->
+<div id="gameCard" style="display:none;">
+  <h1>Red Flag or Green Flag?</h1>
+  <img id="scenarioImage" alt="Scenario" />
+  <p id="scenarioText">Loading scenario...</p>
+  <div class="buttonGroup">
+    <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
+    <button class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
   </div>
+  <p id="feedback"></p>
+  <button class="next" onclick="nextScenario()">Next Card ➡️</button>
+</div>
+
+<!-- ✅ END SCREEN: Only visible when game ends -->
+<div id="endScreen" style="display:none;">
+  <h2>Game Over!</h2>
+  <p id="scoreSummary"></p>
+  <button onclick="restartGame()">Play Again</button>
+</div>
 
   <script src="script.js"></script>
 </body>
