@@ -8,6 +8,8 @@ body {
   padding: 20px;
   margin: 0;
   color: #333;
+  overflow-x: hidden;
+  position: relative;
 }
 
 #logoContainer {
@@ -18,26 +20,25 @@ body {
 #logo {
   max-height: 120px;
   margin-bottom: 20px;
-  border-radius: 16px; /* Adjust for more or less curve */
+  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#startScreen, #endScreen {
+/* Card styling with fade support */
+#startScreen, #endScreen, #gameCard {
   background-color: #fff;
   border-radius: 16px;
   padding: 25px;
   max-width: 600px;
   margin: 0 auto 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  opacity: 1;
 }
 
-#gameCard {
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 25px;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .introText {
@@ -54,7 +55,9 @@ label {
   font-weight: 600;
 }
 
-.buttonGroup button {
+.buttonGroup button,
+.next,
+.escape {
   margin: 12px;
   padding: 12px 24px;
   font-size: 16px;
@@ -62,11 +65,15 @@ label {
   border: none;
   cursor: pointer;
   font-weight: 600;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.buttonGroup button:hover {
+.buttonGroup button:hover,
+.next:hover,
+.escape:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .red {
@@ -80,7 +87,7 @@ label {
 }
 
 .next {
-  background-color: #1e3a8a !important; /* Force override */
+  background-color: #1e3a8a !important;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -92,10 +99,27 @@ label {
 }
 
 .next:hover {
-  background-color: #274aa3 !important; /* Lighter blue on hover */
+  background-color: #274aa3 !important;
 }
 
+.escape {
+  background-color: #c53030;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.escape:hover {
+  background-color: #9b2c2c;
+}
+
+/* Progress bar */
 #progressContainer {
   width: 100%;
   background-color: #eee;
@@ -107,17 +131,49 @@ label {
 #progressBar {
   height: 100%;
   width: 0%;
-  background-color: #00bfa6; /* same as green flag */
+  background-color: #00bfa6;
   border-radius: 10px;
   transition: width 0.3s ease-in-out;
 }
 
+/* Scenario Image + Icon */
+#scenarioImage {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+#categoryIcon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+
+.emojiDisplay {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  text-align: center;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Feedback */
 #feedback {
   font-weight: 600;
   margin-top: 16px;
   color: #444;
 }
 
+/* Review summary */
 #reviewContainer {
   text-align: left;
   max-width: 600px;
@@ -138,31 +194,25 @@ label {
   border-top: 1px solid #ddd;
   margin: 12px 0;
 }
-.escape {
-  background-color: #c53030; /* Calm red tone */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  margin-top: 20px;
-  margin-left: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-.escape:hover {
-  background-color: #9b2c2c; /* Darker red on hover */
-}
-.emojiDisplay {
-  font-size: 2.5rem;
-  margin: 10px 0;
-  text-align: center;
-  animation: popIn 0.3s ease;
-}
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
 
-@keyframes popIn {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
+  .buttonGroup button,
+  .next,
+  .escape {
+    width: 90%;
+    font-size: 18px;
+  }
 
+  #scenarioImage {
+    max-height: 150px;
+  }
+
+  #reviewContainer {
+    padding: 15px;
+  }
+}
