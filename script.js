@@ -13,6 +13,24 @@ const scenarios = [
     category: "romantic"
   },
   {
+  scenario: "Your partner gets mad when you don't immediately text back and accuses you of ignoring them.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—expecting constant access is controlling, not caring.",
+  category: "romantic"
+},
+{
+  scenario: "Your partner says, 'I know social media stresses you out—let’s take a weekend offline together.'",
+  correctAnswer: "green",
+  explanation: "This is a green flag—recognizing emotional needs and offering support builds trust.",
+  category: "romantic"
+},
+{
+  scenario: "Your partner jokes about breaking up every time you disagree or express a boundary.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—using threats to control behavior is emotionally manipulative.",
+  category: "romantic"
+},
+  {
     scenario: "Your partner notices you're upset and asks, 'Do you want to talk or just need space?'",
     correctAnswer: "green",
     explanation: "This is a green flag—respecting your needs shows emotional maturity.",
@@ -61,6 +79,24 @@ const scenarios = [
   explanation: "This is a red flag—instability and blame-shifting can confuse and emotionally harm children.",
   category: "parenting"
 },
+  {
+  scenario: "Your co-parent uses FaceTime to let your child say goodnight when they're apart.",
+  correctAnswer: "green",
+  explanation: "This is a green flag—encouraging connection supports the child’s emotional security.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent blocks your number during disagreements and refuses to communicate.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—cutting off communication prevents problem-solving and harms the child.",
+  category: "parenting"
+},
+{
+  scenario: "Your co-parent says, 'Let’s present a united front—even if we don’t agree until later.'",
+  correctAnswer: "green",
+  explanation: "This is a green flag—consistency and teamwork provide stability for the child.",
+  category: "parenting"
+}
 {
   scenario: "Your co-parent asks, 'What’s been working for you at home?' so you can stay consistent.",
   correctAnswer: "green",
@@ -86,6 +122,24 @@ const scenarios = [
     explanation: "This is a red flag—emotional manipulation to get attention is not healthy behavior.",
     category: "friendship"
   },
+  {
+  scenario: "Your friend only reaches out when they need a ride, money, or emotional dumping.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—one-sided relationships drain energy and create resentment.",
+  category: "friendship"
+},
+{
+  scenario: "Your friend sees you're quiet in a group chat and checks in privately to see if you're okay.",
+  correctAnswer: "green",
+  explanation: "This is a green flag—small check-ins show care and emotional intelligence.",
+  category: "friendship"
+},
+{
+  scenario: "Your friend sends you memes that make fun of people with mental health issues, even after you ask them not to.",
+  correctAnswer: "red",
+  explanation: "This is a red flag—ignoring boundaries and making light of serious topics is harmful.",
+  category: "friendship"
+},
   {
     scenario: "Your friend tells you who you can or can’t hang out with.",
     correctAnswer: "red",
