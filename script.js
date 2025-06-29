@@ -228,20 +228,21 @@ function checkAnswer(answer) {
   const s = filteredScenarios[current];
   const feedback = document.getElementById("feedback");
 
-  if (answer === s.correctAnswer) {
-    feedback.innerText = `✅ Correct! ${s.explanation}`;
-    score++;
+ if (answer === s.correctAnswer) {
+  feedback.innerText = `✅ Correct! ${s.explanation}`;
+  score++;
 
-    // 🎉 Confetti celebration!
-    confetti({
-      particleCount: 75,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+  console.log("🎉 Confetti should be firing now!");
 
-  } else {
-    feedback.innerText = `❌ Not quite. ${s.explanation}`;
-  }
+  confetti({
+    particleCount: 75,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+} else {
+  feedback.innerText = `❌ Not quite. ${s.explanation}`;
+}
 
   // Disable buttons until next is clicked
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = true);
