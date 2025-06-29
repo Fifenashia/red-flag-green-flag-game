@@ -230,23 +230,24 @@ function loadScenario() {
   document.getElementById("feedback").innerText = "";
 
   // Show icon by category
-  const iconMap = {
-    romantic: "image/romantic-icon.png",
-    parenting: "image/parenting-icon.png",
-    friendship: "image/friendship-icon.png"
-  };
+const iconMap = {
+  romantic: "image/romantic-icon.png",
+  parenting: "image/parenting-icon.png",
+  friendship: "image/friendship-icon.png"
+};
 
-  const categoryIcon = document.getElementById("categoryIcon");
-  if (categoryIcon) {
-    const iconSrc = iconMap[s.category];
-    if (iconSrc) {
-      categoryIcon.src = iconSrc;
-      categoryIcon.style.display = "inline-block";
-    } else {
-      categoryIcon.style.display = "none";
-    }
+const categoryIcon = document.getElementById("categoryIcon");
+if (categoryIcon) {
+  const iconSrc = iconMap[s.category];
+  console.log("Icon source:", iconSrc); // Debug
+
+  if (iconSrc) {
+    categoryIcon.src = iconSrc;
+    categoryIcon.style.display = "inline-block";
+  } else {
+    categoryIcon.style.display = "none";
   }
-
+}
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
