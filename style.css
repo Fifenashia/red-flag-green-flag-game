@@ -17,6 +17,8 @@ body {
 
 #logo {
   max-height: 120px;
+  margin-bottom: 20px;
+  border-radius: 16px; /* Adjust for more or less curve */
 }
 
 #startScreen, #endScreen {
