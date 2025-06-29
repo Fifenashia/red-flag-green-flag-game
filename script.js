@@ -222,14 +222,14 @@ function loadScenario() {
   // Set scenario text
   document.getElementById("scenarioText").innerText = s.scenario;
 
-  // Show or hide scenario image
+  // Hide or show scenario image
   document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
   document.getElementById("scenarioImage").src = s.image || "";
 
   // Reset feedback
   document.getElementById("feedback").innerText = "";
 
-  // Show category icon based on scenario type
+  // Show icon by category
   const iconMap = {
     romantic: "images/romantic-icon.png",
     parenting: "images/parenting-icon.png",
@@ -237,16 +237,11 @@ function loadScenario() {
   };
 
   const categoryIcon = document.getElementById("categoryIcon");
-  categoryIcon.src = iconMap[s.category] || "";
-  categoryIcon.style.display = s.category ? "inline-block" : "none";
+  if (categoryIcon) {
+    categoryIcon.src = iconMap[s.category] || "";
+    categoryIcon.style.display = s.category ? "inline-block" : "none";
+  }
 }
-
-
-const categoryIcon = document.getElementById("categoryIcon");
-categoryIcon.src = iconMap[s.category] || "";
-categoryIcon.style.display = s.category ? "inline-block" : "none";
-}
-
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
