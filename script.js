@@ -218,11 +218,27 @@ console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
 
 function loadScenario() {
   const s = filteredScenarios[current];
+
+  // Set scenario text
   document.getElementById("scenarioText").innerText = s.scenario;
+
+  // Hide or show image
   document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
   document.getElementById("scenarioImage").src = s.image || "";
+
+  // Reset feedback
   document.getElementById("feedback").innerText = "";
+
+  // Show emoji by category
+  const emojiMap = {
+    romantic: "💕",
+    parenting: "👪",
+    friendship: "🤝"
+  };
+
+  document.getElementById("categoryEmoji").innerText = emojiMap[s.category] || "";
 }
+
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
