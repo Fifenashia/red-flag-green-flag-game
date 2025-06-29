@@ -170,6 +170,7 @@ let filteredScenarios = [];
 let current = 0;
 let score = 0;
 let total = 0;
+let missedScenarios = [];
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
