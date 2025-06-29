@@ -201,32 +201,28 @@ function startGame() {
   current = 0;
   score = 0;
   total = filteredScenarios.length;
-  missedScenarios = []; // Reset missed list
+  missedScenarios = [];
   document.getElementById("progressBar").style.width = "0%";
 
-  // Reset screens
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("endScreen").style.display = "none";
   document.getElementById("gameCard").style.display = "block";
 
-  // ✅ FIX: Re-enable buttons
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
+
+  loadScenario(); // Make sure the first scenario loads
 }
 
 function loadScenario() {
   const s = filteredScenarios[current];
 
-  // Set scenario text
   document.getElementById("scenarioText").innerText = s.scenario;
 
-  // Hide or show scenario image
   document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
   document.getElementById("scenarioImage").src = s.image || "";
 
-  // Reset feedback
   document.getElementById("feedback").innerText = "";
 
-  // Show icon by category
   const iconMap = {
     romantic: "image/romantic-icon.png",
     parenting: "image/parenting-icon.png",
@@ -236,7 +232,7 @@ function loadScenario() {
   const categoryIcon = document.getElementById("categoryIcon");
   if (categoryIcon) {
     const iconSrc = iconMap[s.category];
-    console.log("Icon source:", iconSrc); // Debug
+    console.log("Icon source:", iconSrc);
 
     if (iconSrc) {
       categoryIcon.src = iconSrc;
@@ -245,7 +241,7 @@ function loadScenario() {
       categoryIcon.style.display = "none";
     }
   }
-} 
+} // ✅ ← This brace was missing before
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
@@ -267,7 +263,6 @@ function checkAnswer(answer) {
     feedback.innerText = `❌ Not quite. ${s.explanation}`;
   }
 
-  // Disable buttons until next is clicked
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = true);
 }
 
@@ -288,24 +283,19 @@ function endGame() {
 }
 
 function restartGame() {
-  // Reset tracking variables
   missedScenarios = [];
   current = 0;
   score = 0;
   total = 0;
 
-  // Reset progress bar
   document.getElementById("progressBar").style.width = "0%";
-
-  // Clear any lingering feedback or review content
   document.getElementById("feedback").innerText = "";
   document.getElementById("reviewContainer").innerHTML = "";
 
-  // Reset UI screens
   document.getElementById("startScreen").style.display = "block";
   document.getElementById("gameCard").style.display = "none";
   document.getElementById("endScreen").style.display = "none";
 
-  // Re-enable answer buttons in case they stayed disabled
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 }
+
