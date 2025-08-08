@@ -3,68 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Check the Vibes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Check the Vibes</title>
+  <meta name="description" content="A card-style quiz game to help you identify red and green flags in relationships. Learn emotional cues and build healthy habits.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- Skip link for keyboard users -->
+  <a href="#scenarioText" class="skip-link">Skip to main content</a>
+
+  <!-- Logo -->
   <div id="logoContainer">
-    <img src="image/WellSpring-logo.png" alt="Wellspring Logo" id="logo">
-  </div>
-<!-- ✅ START SCREEN: Shows first -->
-<div id="startScreen">
-  <h1>Welcome to Check the Vibes</h1>
-  <p class="introText">
-  Ever get a weird feeling about how someone treats you?<br>
-  This game helps you check the vibes and learn what’s okay—and what’s not—in relationships.
-</p>
-
-  <p>Select a category and press start to begin.</p>
-
-  <label><input type="checkbox" name="category" value="romantic"> Romantic</label>
-  <label><input type="checkbox" name="category" value="parenting"> Parenting</label>
-  <label><input type="checkbox" name="category" value="friendship"> Friendship</label>
-  <br/><br/>
-  <button onclick="startGame()">Start Game</button>
-</div>
-
-<div id="gameCard" style="display:none;">
-  <h1>Check the Vibes</h1>
-
-  <!-- ✅ Progress Bar -->
-  <div id="progressContainer">
-    <div id="progressBar"></div>
+    <img src="image/WellSpring-logo.png" alt="Wellspring Logo" id="logo" />
   </div>
 
-  <img id="scenarioImage" alt="Scenario" />
- <img id="categoryIcon" class="emojiDisplay" alt="Category Icon" />
-  <p id="scenarioText">Loading scenario...</p>
+  <!-- ✅ START SCREEN -->
+  <main id="startScreen">
+    <h1>Welcome to Check the Vibes</h1>
+    <p class="introText">
+      Ever get a weird feeling about how someone treats you?<br>
+      This game helps you check the vibes and learn what’s okay—and what’s not—in relationships.
+    </p>
 
-  <div class="buttonGroup">
-    <button class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
-    <button class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
-  </div>
+    <fieldset>
+      <legend>Select a category to begin:</legend>
+      <label><input type="checkbox" name="category" value="romantic" /> Romantic</label>
+      <label><input type="checkbox" name="category" value="parenting" /> Parenting</label>
+      <label><input type="checkbox" name="category" value="friendship" /> Friendship</label>
+    </fieldset>
 
-  <p id="feedback"></p>
+    <br />
+    <button type="button" onclick="startGame()">Start Game</button>
+  </main>
 
-  <button class="next" onclick="nextScenario()">Next Card ➡️</button>
-  <button class="escape" onclick="restartGame()">Start Over ⏹️</button>
-</div>
+  <!-- ✅ GAME CARD -->
+  <main id="gameCard" style="display: none;">
+    <h1>Check the Vibes</h1>
 
+    <div id="progressContainer">
+      <div id="progressBar"></div>
+    </div>
 
-<!-- ✅ END SCREEN: Only visible when game ends -->
-<div id="endScreen" style="display:none;">
-  <h2>Game Over!</h2>
-  <p id="scoreSummary"></p>
+    <img id="scenarioImage" alt="Scenario" />
+    <img id="categoryIcon" class="emojiDisplay" alt="Category Icon" />
+    <p id="scenarioText">Loading scenario...</p>
 
-  <!-- 🔍 Missed questions will show up here -->
-  <div id="reviewContainer"></div>
+    <div class="buttonGroup">
+      <button type="button" class="red" onclick="checkAnswer('red')">Red Flag 🚩</button>
+      <button type="button" class="green" onclick="checkAnswer('green')">Green Flag ✅</button>
+    </div>
 
-  <button onclick="restartGame()">Play Again</button>
-</div>
+    <p id="feedback" aria-live="polite"></p>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>
-  
+    <button type="button" class="next" onclick="nextScenario()">Next Card ➡️</button>
+    <button type="button" class="escape" onclick="restartGame()">Start Over ⏹️</button>
+  </main>
+
+  <!-- ✅ END SCREEN -->
+  <main id="endScreen" style="display: none;">
+    <h2>Game Over!</h2>
+    <p id="scoreSummary"></p>
+
+    <div id="reviewContainer"></div>
+
+    <button type="button" onclick="restartGame()">Play Again</button>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
