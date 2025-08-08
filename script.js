@@ -165,7 +165,6 @@ const scenarios = [
   category: "friendship"
 },
 ];
-
 let filteredScenarios = [];
 let current = 0;
 let score = 0;
@@ -191,7 +190,6 @@ function startGame() {
 
   filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
   console.log("Loaded scenarios:", filteredScenarios.length);
-  console.log("Scenarios loaded:", filteredScenarios.map(s => s.scenario));
 
   if (filteredScenarios.length === 0) {
     alert("No scenarios available for selected category.");
@@ -202,25 +200,21 @@ function startGame() {
   score = 0;
   total = filteredScenarios.length;
   missedScenarios = [];
-  document.getElementById("progressBar").style.width = "0%";
 
+  document.getElementById("progressBar").style.width = "0%";
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("endScreen").style.display = "none";
   document.getElementById("gameCard").style.display = "block";
 
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
-
-  loadScenario(); // Make sure the first scenario loads
+  loadScenario();
 }
 
 function loadScenario() {
   const s = filteredScenarios[current];
-
   document.getElementById("scenarioText").innerText = s.scenario;
-
   document.getElementById("scenarioImage").style.display = s.image ? "block" : "none";
   document.getElementById("scenarioImage").src = s.image || "";
-
   document.getElementById("feedback").innerText = "";
 
   const iconMap = {
@@ -232,8 +226,6 @@ function loadScenario() {
   const categoryIcon = document.getElementById("categoryIcon");
   if (categoryIcon) {
     const iconSrc = iconMap[s.category];
-    console.log("Icon source:", iconSrc);
-
     if (iconSrc) {
       categoryIcon.src = iconSrc;
       categoryIcon.style.display = "inline-block";
@@ -241,7 +233,9 @@ function loadScenario() {
       categoryIcon.style.display = "none";
     }
   }
-} // ✅ ← This brace was missing before
+
+  updateProgressBar();
+}
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
@@ -250,17 +244,14 @@ function checkAnswer(answer) {
   if (answer === s.correctAnswer) {
     feedback.innerText = `✅ Correct! ${s.explanation}`;
     score++;
-
-    console.log("🎉 Confetti should be firing now!");
-
     confetti({
       particleCount: 75,
       spread: 70,
       origin: { y: 0.6 }
     });
-
   } else {
     feedback.innerText = `❌ Not quite. ${s.explanation}`;
+    missedScenarios.push(s);
   }
 
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = true);
@@ -280,6 +271,24 @@ function endGame() {
   document.getElementById("gameCard").style.display = "none";
   document.getElementById("endScreen").style.display = "block";
   document.getElementById("scoreSummary").innerText = `You got ${score} out of ${total} correct!`;
+
+  const reviewContainer = document.getElementById("reviewContainer");
+  reviewContainer.innerHTML = '';
+
+  if (missedScenarios.length > 0) {
+    const header = document.createElement("h3");
+    header.innerText = "You missed these:";
+    reviewContainer.appendChild(header);
+
+    missedScenarios.forEach((s, index) => {
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${index + 1}. ${s.scenario}</strong><br>✅ Correct answer: <em>${s.correctAnswer.toUpperCase()}</em><br>${s.explanation}`;
+      reviewContainer.appendChild(p);
+      reviewContainer.appendChild(document.createElement("hr"));
+    });
+  } else {
+    reviewContainer.innerHTML = `<p>🎉 You got them all right—amazing work!</p>`;
+  }
 }
 
 function restartGame() {
@@ -299,3 +308,7 @@ function restartGame() {
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 }
 
+function updateProgressBar() {
+  const progress = ((current + 1) / total) * 100;
+  document.getElementById("progressBar").style.width = `${progress}%`;
+}
