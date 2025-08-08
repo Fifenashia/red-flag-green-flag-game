@@ -216,3 +216,11 @@ label {
     padding: 15px;
   }
 }
+#scoreArea {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
