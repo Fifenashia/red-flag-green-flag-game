@@ -102,28 +102,12 @@ label {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.red {
-  background-color: #ff6b6b;
-  color: white;
-}
-.green {
-  background-color: #00bfa6;
-  color: white;
-}
-.next {
-  background-color: #1e3a8a !important;
-  color: white;
-}
-.next:hover {
-  background-color: #274aa3 !important;
-}
-.escape {
-  background-color: #c53030;
-  color: white;
-}
-.escape:hover {
-  background-color: #9b2c2c;
-}
+.red { background-color: #ff6b6b; color: white; }
+.green { background-color: #00bfa6; color: white; }
+.next { background-color: #1e3a8a !important; color: white; }
+.next:hover { background-color: #274aa3 !important; }
+.escape { background-color: #c53030; color: white; }
+.escape:hover { background-color: #9b2c2c; }
 
 /* Progress bar */
 #progressContainer {
@@ -183,7 +167,7 @@ label {
   background: #ffffffdd;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 #reviewContainer p {
   margin: 6px 0;
@@ -195,27 +179,7 @@ label {
   margin: 12px 0;
 }
 
-/* Mobile-friendly tweaks */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  .buttonGroup button,
-  .next,
-  .escape {
-    width: 90%;
-    font-size: 18px;
-  }
-
-  #scenarioImage {
-    max-height: 150px;
-  }
-
-  #reviewContainer {
-    padding: 15px;
-  }
-}
+/* Score area */
 #scoreArea {
   display: flex;
   justify-content: space-around;
@@ -224,3 +188,15 @@ label {
   color: #1e3a8a;
 }
 
+/* Mobile-friendly tweaks */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+
+  .buttonGroup button, .next, .escape {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  #scenarioImage { max-height: 150px; }
+  #reviewContainer { padding: 15px; }
+}
