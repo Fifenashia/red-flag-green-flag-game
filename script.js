@@ -1,3 +1,5 @@
+console.log("✅ script.js loaded");
+
 // ✅ DATA (your original scenarios preserved)
 const scenarios = [
   // 💕 Romantic Scenarios
@@ -188,12 +190,18 @@ function shuffle(array) {
 // ✅ GAME FLOW
 function startGame() {
   const selected = Array.from(document.querySelectorAll("input[name='category']:checked")).map(cb => cb.value);
+  console.log("▶️ startGame()", { selected });
+
   if (selected.length === 0) {
     alert("Please select at least one category to play.");
     return;
   }
   filteredScenarios = shuffle(scenarios.filter(s => selected.includes(s.category)));
-  if (filteredScenarios.length === 0) {
+  total = filteredScenarios.length;
+
+  console.log("Loaded scenarios:", total);
+
+  if (total === 0) {
     alert("No scenarios available for selected category.");
     return;
   }
@@ -202,7 +210,6 @@ function startGame() {
   score = 0;
   streak = 0;
   highestStreak = 0;
-  total = filteredScenarios.length;
   missedScenarios = [];
 
   // Reset UI
@@ -215,17 +222,20 @@ function startGame() {
   // Re-enable buttons
   document.querySelectorAll(".buttonGroup button").forEach(btn => btn.disabled = false);
 
-  // Reset score/streak UI if present
+  // Reset score/streak UI
   const sd = document.getElementById("scoreDisplay");
   if (sd) sd.innerText = "Score: 0";
   const st = document.getElementById("streakDisplay");
   if (st) st.innerText = "Streak: 0 🔥";
 
   loadScenario();
+  updateProgressBar(); // ensure first bar paint
 }
 
 function loadScenario() {
   const s = filteredScenarios[current];
+  console.log("🃏 loadScenario()", { current: current + 1, of: total, category: s.category });
+
   document.getElementById("scenarioText").innerText = s.scenario;
 
   // Image handling (optional)
@@ -238,6 +248,12 @@ function loadScenario() {
   // Reset feedback
   const fb = document.getElementById("feedback");
   if (fb) fb.innerText = "";
+
+  // Refresh score/streak UI
+  const sd = document.getElementById("scoreDisplay");
+  if (sd) sd.innerText = `Score: ${score}`;
+  const st = document.getElementById("streakDisplay");
+  if (st) st.innerText = `Streak: ${streak} 🔥`;
 
   // Category icon
   const iconMap = {
@@ -261,25 +277,25 @@ function loadScenario() {
 
 function checkAnswer(answer) {
   const s = filteredScenarios[current];
-  const feedback = document.getElementById("feedback");
+  const fb = document.getElementById("feedback");
 
   if (answer === s.correctAnswer) {
     score++;
     streak++;
     if (streak > highestStreak) highestStreak = streak;
-    if (feedback) feedback.innerText = `✅ Correct! ${s.explanation}`;
+    if (fb) fb.innerText = `✅ Correct! ${s.explanation}`;
 
     // celebration
-    if (typeof confetti === 'function') {
+    if (typeof confetti === "function") {
       confetti({ particleCount: 75, spread: 70, origin: { y: 0.6 } });
     }
   } else {
     streak = 0;
     missedScenarios.push(s);
-    if (feedback) feedback.innerText = `❌ Not quite. ${s.explanation}`;
+    if (fb) fb.innerText = `❌ Not quite. ${s.explanation}`;
   }
 
-  // Update displays if present
+  // Update displays
   const sd = document.getElementById("scoreDisplay");
   if (sd) sd.innerText = `Score: ${score}`;
   const st = document.getElementById("streakDisplay");
@@ -353,7 +369,18 @@ function restartGame() {
 }
 
 function updateProgressBar() {
+  if (!total || !Number.isFinite(total)) {
+    console.warn("Progress skipped — total not set yet", { total });
+    return;
+  }
   const progress = ((current + 1) / total) * 100;
   const pb = document.getElementById("progressBar");
-  if (pb && isFinite(progress)) pb.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+  if (pb) pb.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+  // console.log("📈 progress", { current: current + 1, total, width: pb?.style.width });
 }
+
+// ✅ Make functions available to inline onclick handlers
+window.startGame = startGame;
+window.checkAnswer = checkAnswer;
+window.nextScenario = nextScenario;
+window.restartGame = restartGame;
